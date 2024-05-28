@@ -1,0 +1,14 @@
+body {
+  font-family: system-ui, sans-serif;
+}
+
+#book-table {
+  th, td {
+    border: 1px solid grey;
+    padding: 5px 10px;
+  }
+  /* header row */
+  th {
+    text-align: left;
+  }
+}

@@ -1,5 +1,5 @@
 const myLibrary = [];
-const bookTable = document.querySelector("#book-table");
+const bookTable = document.querySelector("#book-table tbody");
 
 function Book(title, author, pages, read) {
   this.title = title;
