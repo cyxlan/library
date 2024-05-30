@@ -1,5 +1,7 @@
 const myLibrary = [];
 const bookTable = document.querySelector("#book-table tbody");
+const newBookForm = document.querySelector('#new-book-form');
+const submitBtn = document.querySelector('#new-book-form button[type="submit"]');
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -11,12 +13,12 @@ function Book(title, author, pages, read) {
   }
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(title, author, pages, read) {
   const book = new Book(
-    title = prompt("Title"),
-    author = prompt("Author"),
-    pages = prompt("Pages"),
-    read = prompt("Read")
+    title = title,
+    author = author,
+    pages = pages,
+    read = read
   );
   myLibrary.push(book);
 }
@@ -40,6 +42,22 @@ function displayBooks() {
     bookTable.appendChild(row);
   })
 }
+
+// on form submit, get new book info and add to library
+submitBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  // if form inputs are valid
+  if (newBookForm.reportValidity()) {
+    addBookToLibrary(
+      document.querySelector('#book-title').value,
+      document.querySelector('#book-author').value,
+      document.querySelector('#book-pages').value,
+      document.querySelector('#book-read').checked
+    );
+    newBookForm.reset();
+    displayBooks();
+  }
+})
 
 // books for testing
 let theHobbit = new Book(
