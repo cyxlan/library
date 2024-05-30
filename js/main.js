@@ -23,10 +23,10 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 
-// display books on page
-function displayBooks() {
-  const cols = ["title", "author", "pages", "read"];
-  myLibrary.forEach((book) => {
+// update book table on page
+function updateBookTable() {
+  function addTableRow(book) {
+    const cols = ["title", "author", "pages", "read"];
     const row = document.createElement("tr");
     for (const i in cols) {
       const cell = document.createElement("td");
@@ -40,7 +40,18 @@ function displayBooks() {
       row.appendChild(cell);
     }
     bookTable.appendChild(row);
-  })
+  }
+  
+  // if table is empty, populate with all books
+  if (bookTable.childNodes.length === 0) {
+    myLibrary.forEach((book) => {
+      addTableRow(book);
+    })
+  }
+  // else, append latest book
+  else {
+    addTableRow(myLibrary.at(-1));
+  }
 }
 
 // on form submit, get new book info and add to library
@@ -55,7 +66,7 @@ submitBtn.addEventListener('click', (e) => {
       document.querySelector('#book-read').checked
     );
     newBookForm.reset();
-    displayBooks();
+    updateBookTable();
   }
 })
 
@@ -82,4 +93,4 @@ myLibrary.push(theHobbit);
 myLibrary.push(jungleBook);
 myLibrary.push(cuckoosNest);
 
-displayBooks();
+updateBookTable();
