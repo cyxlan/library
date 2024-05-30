@@ -9,6 +9,7 @@
   <title>Library</title>
 </head>
 <body>
+  <!-- books -->
   <table id="book-table">
     <thead>
       <tr>
@@ -21,6 +22,32 @@
     <tbody>
     </tbody>
   </table>
+
+  <!-- new book form -->
+  <form action="" method="post">
+    <fieldset>
+      <legend>Add new book</legend>
+      <ul class="form-fields">
+        <li>
+          <label for="book-title">Title</label>
+          <input type="text" name="book-title" id="book-title">
+        </li>
+        <li>
+          <label for="book-author">Author</label>
+          <input type="text" name="book-author" id="book-author">
+        </li>
+        <li>
+          <label for="book-pages">Number of pages</label>
+          <input type="number" name="book-pages" id="book-pages">
+        </li>
+        <li>
+          <label for="book-read">Read?</label>
+          <input type="checkbox" name="book-read" id="book-read">
+        </li>
+      </ul>
+    </fieldset>
+    <button type="submit">Add book</button>
+  </form>
   <script src="js/main.js"></script>
 </body>
 </html>
