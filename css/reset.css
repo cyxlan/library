@@ -29,3 +29,12 @@ p, h1, h2, h3, h4, h5, h6 {
 table {
   border-collapse: collapse;
 }
+fieldset, legend, ul {
+  padding: 0;
+}
+fieldset {
+  border: 0;
+}
+legend {
+  float: left; /* move inside fieldset */
+}

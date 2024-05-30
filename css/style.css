@@ -12,3 +12,36 @@ body {
     text-align: left;
   }
 }
+
+#new-book-form {
+  background-color: lightgrey;
+  padding: 20px;
+  max-width: max-content;
+  fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  legend {
+    font-weight: 600;
+    padding-bottom: 10px;
+  }
+  ul.form-fields {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    li {
+      display: contents;
+    }
+    label {
+      margin-right: 20px;
+    }
+    input[type="checkbox"]  {
+      justify-self: start;
+    }
+  }
+  button[type="submit"] {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
