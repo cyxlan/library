@@ -22,31 +22,35 @@
     <tbody></tbody>
   </table>
 
+  <button type="button" id="new-book-btn">New book</button>
   <!-- new book form -->
-  <form action="" method="post" id="new-book-form">
-    <fieldset>
-      <legend>Add new book</legend>
-      <ul class="form-fields">
-        <li>
-          <label for="book-title">Title</label>
-          <input type="text" name="book-title" id="book-title" required>
-        </li>
-        <li>
-          <label for="book-author">Author</label>
-          <input type="text" name="book-author" id="book-author" required>
-        </li>
-        <li>
-          <label for="book-pages">Number of pages</label>
-          <input type="number" name="book-pages" id="book-pages" required>
-        </li>
-        <li>
-          <label for="book-read">Read?</label>
-          <input type="checkbox" name="book-read" id="book-read">
-        </li>
-      </ul>
-    </fieldset>
-    <button type="submit">Add book</button>
-  </form>
+  <dialog id="new-book-modal">
+    <form action="" method="dialog" id="new-book-form">
+      <fieldset>
+        <legend>Add new book</legend>
+        <ul class="form-fields">
+          <li>
+            <label for="book-title">Title</label>
+            <input type="text" name="book-title" id="book-title" required>
+          </li>
+          <li>
+            <label for="book-author">Author</label>
+            <input type="text" name="book-author" id="book-author" required>
+          </li>
+          <li>
+            <label for="book-pages">Number of pages</label>
+            <input type="number" name="book-pages" id="book-pages" required>
+          </li>
+          <li>
+            <label for="book-read">Read?</label>
+            <input type="checkbox" name="book-read" id="book-read">
+          </li>
+        </ul>
+      </fieldset>
+      <button type="submit">Add book</button>
+    </form>
+  </dialog>
+
   <script src="js/main.js"></script>
 </body>
 </html>

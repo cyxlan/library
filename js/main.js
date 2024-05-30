@@ -1,5 +1,7 @@
 const myLibrary = [];
 const bookTable = document.querySelector("#book-table tbody");
+const newBookBtn = document.querySelector('#new-book-btn');
+const newBookModal = document.querySelector('#new-book-modal');
 const newBookForm = document.querySelector('#new-book-form');
 const submitBtn = document.querySelector('#new-book-form button[type="submit"]');
 
@@ -54,6 +56,10 @@ function updateBookTable() {
   }
 }
 
+newBookBtn.addEventListener('click', () => {
+  newBookModal.showModal();
+})
+
 // on form submit, get new book info and add to library
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -67,6 +73,7 @@ submitBtn.addEventListener('click', (e) => {
     );
     newBookForm.reset();
     updateBookTable();
+    newBookModal.close();
   }
 })
 
