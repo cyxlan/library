@@ -102,7 +102,7 @@ newBook.submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   // if form inputs are valid
   if (newBook.form.reportValidity()) {
-    library.addBook(newBook.getFormValues());
+    library.addBook(...newBook.getFormValues());
     newBook.form.reset();
     updateBookTable();
     newBook.modal.close();
