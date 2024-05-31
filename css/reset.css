@@ -32,9 +32,13 @@ table {
 dialog, fieldset, legend, ul {
   padding: 0;
 }
-dialog, fieldset {
+dialog, fieldset, input, button {
   border: 0;
 }
 legend {
-  float: left; /* move inside fieldset */
+  /* behave as grid item normally */
+  display: contents;
+}
+button {
+  cursor: pointer;
 }

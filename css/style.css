@@ -31,18 +31,24 @@ body {
   padding: 20px;
   max-width: max-content;
   fieldset {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
   }
   legend {
     font-weight: 600;
     padding-bottom: 10px;
   }
+  .cancel-btn {
+    grid-column: 2;
+    justify-self: end;
+  }
   ul.form-fields {
     list-style-type: none;
+    grid-column: 1 / span 2;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 10px;
+    gap: 15px;
     li {
       display: contents;
     }

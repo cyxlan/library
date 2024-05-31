@@ -61,6 +61,7 @@ const newBook = {
   "btn": document.querySelector('#new-book-btn'),
   "modal": document.querySelector('#new-book-modal'),
   "form": document.querySelector('#new-book-form'),
+  "cancelBtn": document.querySelector('#new-book-form .cancel-btn'),
   "submitBtn": document.querySelector('#new-book-form button[type="submit"]'),
   "getFormValues": function() {
     return [
@@ -74,6 +75,9 @@ const newBook = {
 
 newBook.btn.addEventListener('click', () => {
   newBook.modal.showModal();
+})
+newBook.cancelBtn.addEventListener('click', () => {
+  newBook.modal.close();
 })
 
 // on form submit, get new book info and add to library
