@@ -46,8 +46,14 @@ function updateBookTable() {
       const cell = document.createElement("td");
       const col = cols[i]
       if (col === "read") {
-        // if true, map to "Yes", else "No"
-        cell.textContent = book[col] ? "Yes" : "No";
+        const checkbox = document.createElement("input");
+        checkbox.setAttribute("type", "checkbox");
+        checkbox.setAttribute("aria-labelledby", "read-header");
+        // if true, set checkbox to checked
+        if (book[col]) {
+          checkbox.setAttribute("checked", "checked")
+        }
+        cell.appendChild(checkbox);
       } else if (col === "delete") {
         const deleteBtn = document.createElement("button");
         deleteBtn.type = "button";
