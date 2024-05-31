@@ -8,31 +8,37 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.id = id;
 }
 
 const library = {
   "books": [],
   "table": document.querySelector("#book-table tbody"),
-  "addBook": function([title, author, pages, read]) {
+  "addBook": function([title, author, pages, read, id]) {
     const book = new Book(
       title = title,
       author = author,
       pages = pages,
-      read = read
+      read = read,
+      id = id
     );
     this.books.push(book);
   },
-  "deleteBook": function(index) {
+  "deleteBook": function(id) {
+    // get index of book to delete based on id
+    const index = this.books.findIndex((book) => {
+      return book.id === id;
+    })
     this.books.splice(index, 1);
   } 
 }
 
 // update book table on page
 function updateBookTable() {
-  function addTableRow(book, index) {
+  function addTableRow(book, id) {
     const cols = ["title", "author", "pages", "read", "delete"];
     const row = document.createElement("tr");
-    row.setAttribute("index", index);
+    row.setAttribute("book-id", id);
     for (const i in cols) {
       const cell = document.createElement("td");
       const col = cols[i]
@@ -46,7 +52,7 @@ function updateBookTable() {
         deleteBtn.textContent = "Delete";
         cell.appendChild(deleteBtn);
         deleteBtn.addEventListener("click", function() {
-          library.deleteBook(index);
+          library.deleteBook(id);
           library.table.removeChild(row);
         })
       } else {
@@ -108,19 +114,22 @@ let theHobbit = new Book(
   title = "The Hobbit",
   author = "J.R.R. Tolkien",
   pages = 295,
-  read = false
+  read = false,
+  id = 0
 );
 let jungleBook = new Book(
   title = "The Jungle Book",
   author = "Rudyard Kipling",
   pages = 277,
-  read = true
+  read = true,
+  id = 1
 );
 let cuckoosNest = new Book(
   title = "One Flew Over the Cuckoo's Nest",
   author = "Ken Kesey",
   pages = 325,
-  read = true
+  read = true,
+  id = 2
 );
 library.books.push(theHobbit);
 library.books.push(jungleBook);
