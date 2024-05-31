@@ -35,10 +35,10 @@ const library = {
 
 // update book table on page
 function updateBookTable() {
-  function addTableRow(book, id) {
+  function addTableRow(book) {
     const cols = ["title", "author", "pages", "read", "delete"];
     const row = document.createElement("tr");
-    row.setAttribute("book-id", id);
+    row.setAttribute("book-id", book.id);
     for (const i in cols) {
       const cell = document.createElement("td");
       const col = cols[i]
@@ -52,7 +52,7 @@ function updateBookTable() {
         deleteBtn.textContent = "Delete";
         cell.appendChild(deleteBtn);
         deleteBtn.addEventListener("click", function() {
-          library.deleteBook(id);
+          library.deleteBook(book.id);
           library.table.removeChild(row);
         })
       } else {
@@ -70,7 +70,7 @@ function updateBookTable() {
     })
   } else {
     // append latest book
-    addTableRow(library.books.at(-1), library.books.length - 1);
+    addTableRow(library.books.at(-1));
   }
 }
 
@@ -102,7 +102,7 @@ newBook.submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   // if form inputs are valid
   if (newBook.form.reportValidity()) {
-    library.addBook(...newBook.getFormValues());
+    library.addBook(...newBook.getFormValues(), library.books.at(-1).id + 1);
     newBook.form.reset();
     updateBookTable();
     newBook.modal.close();
