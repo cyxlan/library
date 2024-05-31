@@ -29,7 +29,7 @@ function addBookToLibrary([title, author, pages, read]) {
 // update book table on page
 function updateBookTable() {
   function addTableRow(book) {
-    const cols = ["title", "author", "pages", "read"];
+    const cols = ["title", "author", "pages", "read", "delete"];
     const row = document.createElement("tr");
     for (const i in cols) {
       const cell = document.createElement("td");
@@ -37,6 +37,12 @@ function updateBookTable() {
       if (col === "read") {
         // if true, map to "Yes", else "No"
         cell.textContent = book[col] ? "Yes" : "No";
+      } else if (col === "delete") {
+        const deleteBtn = document.createElement("button");
+        deleteBtn.type = "button";
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.textContent = "Delete";
+        cell.appendChild(deleteBtn);
       } else {
         cell.textContent = book[col];
       }
@@ -44,7 +50,7 @@ function updateBookTable() {
     }
     bookTable.appendChild(row);
   }
-  
+
   // if table is empty, populate with all books
   if (bookTable.childNodes.length === 0) {
     myLibrary.forEach((book) => {
