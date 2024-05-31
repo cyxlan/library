@@ -29,9 +29,10 @@ const library = {
 
 // update book table on page
 function updateBookTable() {
-  function addTableRow(book) {
+  function addTableRow(book, index) {
     const cols = ["title", "author", "pages", "read", "delete"];
     const row = document.createElement("tr");
+    row.setAttribute("index", index);
     for (const i in cols) {
       const cell = document.createElement("td");
       const col = cols[i]
@@ -54,13 +55,12 @@ function updateBookTable() {
 
   // if table is empty, populate with all books
   if (library.table.childNodes.length === 0) {
-    library.books.forEach((book) => {
-      addTableRow(book);
+    library.books.forEach((book, i) => {
+      addTableRow(book, i);
     })
-  }
-  // else, append latest book
-  else {
-    addTableRow(library.books.at(-1));
+  } else {
+    // append latest book
+    addTableRow(library.books.at(-1), library.books.length - 1);
   }
 }
 
