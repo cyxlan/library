@@ -1,6 +1,3 @@
-const myLibrary = [];
-const bookTable = document.querySelector("#book-table tbody");
-
 // prevent Chrome showing confirm form resubmission prompt on refresh
 if (window.history.replaceState) {
   window.history.replaceState(null, null, window.location.href);
@@ -16,14 +13,18 @@ function Book(title, author, pages, read) {
   }
 }
 
-function addBookToLibrary([title, author, pages, read]) {
-  const book = new Book(
-    title = title,
-    author = author,
-    pages = pages,
-    read = read
-  );
-  myLibrary.push(book);
+const library = {
+  "books": [],
+  "table": document.querySelector("#book-table tbody"),
+  "addBook": function([title, author, pages, read]) {
+    const book = new Book(
+      title = title,
+      author = author,
+      pages = pages,
+      read = read
+    );
+    this.books.push(book);
+  }
 }
 
 // update book table on page
@@ -48,18 +49,18 @@ function updateBookTable() {
       }
       row.appendChild(cell);
     }
-    bookTable.appendChild(row);
+    library.table.appendChild(row);
   }
 
   // if table is empty, populate with all books
-  if (bookTable.childNodes.length === 0) {
-    myLibrary.forEach((book) => {
+  if (library.table.childNodes.length === 0) {
+    library.books.forEach((book) => {
       addTableRow(book);
     })
   }
   // else, append latest book
   else {
-    addTableRow(myLibrary.at(-1));
+    addTableRow(library.books.at(-1));
   }
 }
 
@@ -91,7 +92,7 @@ newBook.submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   // if form inputs are valid
   if (newBook.form.reportValidity()) {
-    addBookToLibrary(newBook.getFormValues());
+    library.addBook(newBook.getFormValues());
     newBook.form.reset();
     updateBookTable();
     newBook.modal.close();
@@ -117,8 +118,8 @@ let cuckoosNest = new Book(
   pages = 325,
   read = true
 );
-myLibrary.push(theHobbit);
-myLibrary.push(jungleBook);
-myLibrary.push(cuckoosNest);
+library.books.push(theHobbit);
+library.books.push(jungleBook);
+library.books.push(cuckoosNest);
 
 updateBookTable();
