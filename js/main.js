@@ -1,9 +1,5 @@
 const myLibrary = [];
 const bookTable = document.querySelector("#book-table tbody");
-const newBookBtn = document.querySelector('#new-book-btn');
-const newBookModal = document.querySelector('#new-book-modal');
-const newBookForm = document.querySelector('#new-book-form');
-const submitBtn = document.querySelector('#new-book-form button[type="submit"]');
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -15,7 +11,7 @@ function Book(title, author, pages, read) {
   }
 }
 
-function addBookToLibrary(title, author, pages, read) {
+function addBookToLibrary([title, author, pages, read]) {
   const book = new Book(
     title = title,
     author = author,
@@ -56,24 +52,34 @@ function updateBookTable() {
   }
 }
 
-newBookBtn.addEventListener('click', () => {
-  newBookModal.showModal();
-})
-
-// on form submit, get new book info and add to library
-submitBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  // if form inputs are valid
-  if (newBookForm.reportValidity()) {
-    addBookToLibrary(
+const newBook = {
+  "btn": document.querySelector('#new-book-btn'),
+  "modal": document.querySelector('#new-book-modal'),
+  "form": document.querySelector('#new-book-form'),
+  "submitBtn": document.querySelector('#new-book-form button[type="submit"]'),
+  "getFormValues": function() {
+    return [
       document.querySelector('#book-title').value,
       document.querySelector('#book-author').value,
       document.querySelector('#book-pages').value,
       document.querySelector('#book-read').checked
-    );
-    newBookForm.reset();
+    ]
+  }
+};
+
+newBook.btn.addEventListener('click', () => {
+  newBook.modal.showModal();
+})
+
+// on form submit, get new book info and add to library
+newBook.submitBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  // if form inputs are valid
+  if (newBook.form.reportValidity()) {
+    addBookToLibrary(newBook.getFormValues());
+    newBook.form.reset();
     updateBookTable();
-    newBookModal.close();
+    newBook.modal.close();
   }
 })
 
