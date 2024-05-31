@@ -3,7 +3,7 @@ if (window.history.replaceState) {
   window.history.replaceState(null, null, window.location.href);
 }
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, id) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -14,7 +14,7 @@ function Book(title, author, pages, read) {
 const library = {
   "books": [],
   "table": document.querySelector("#book-table tbody"),
-  "addBook": function([title, author, pages, read, id]) {
+  "addBook": function(title, author, pages, read, id) {
     const book = new Book(
       title = title,
       author = author,
@@ -109,30 +109,14 @@ newBook.submitBtn.addEventListener('click', (e) => {
   }
 })
 
-// books for testing
-let theHobbit = new Book(
-  title = "The Hobbit",
-  author = "J.R.R. Tolkien",
-  pages = 295,
-  read = false,
-  id = 0
-);
-let jungleBook = new Book(
-  title = "The Jungle Book",
-  author = "Rudyard Kipling",
-  pages = 277,
-  read = true,
-  id = 1
-);
-let cuckoosNest = new Book(
-  title = "One Flew Over the Cuckoo's Nest",
-  author = "Ken Kesey",
-  pages = 325,
-  read = true,
-  id = 2
-);
-library.books.push(theHobbit);
-library.books.push(jungleBook);
-library.books.push(cuckoosNest);
+// load sample books
+const sampleBooks = [
+  ["The Hobbit", "J.R.R. Tolkien", 295, false],
+  ["The Jungle Book", "Rudyard Kipling", 277, true],
+  ["One Flew Over the Cuckoo's Nest", "Ken Kesey", 325, true]
+]
+sampleBooks.forEach((bookInfo, i) => {
+  library.addBook(...bookInfo, i);
+})
 
 updateBookTable();
