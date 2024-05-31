@@ -48,6 +48,10 @@ function updateBookTable() {
         deleteBtn.classList.add("delete-btn");
         deleteBtn.textContent = "Delete";
         cell.appendChild(deleteBtn);
+        deleteBtn.addEventListener("click", function() {
+          library.deleteBook(index);
+          library.table.removeChild(row);
+        })
       } else {
         cell.textContent = book[col];
       }
