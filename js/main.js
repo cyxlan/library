@@ -1,6 +1,11 @@
 const myLibrary = [];
 const bookTable = document.querySelector("#book-table tbody");
 
+// prevent Chrome showing confirm form resubmission prompt on refresh
+if (window.history.replaceState) {
+  window.history.replaceState(null, null, window.location.href);
+}
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
