@@ -24,7 +24,10 @@ const library = {
       read = read
     );
     this.books.push(book);
-  }
+  },
+  "deleteBook": function(index) {
+    this.books.splice(index, 1);
+  } 
 }
 
 // update book table on page
