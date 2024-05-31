@@ -54,6 +54,9 @@ function updateBookTable() {
           checkbox.setAttribute("checked", "checked")
         }
         cell.appendChild(checkbox);
+        checkbox.addEventListener("click", function() {
+          book.toggleRead();
+        })
       } else if (col === "delete") {
         const deleteBtn = document.createElement("button");
         deleteBtn.type = "button";
