@@ -9,6 +9,9 @@ function Book(title, author, pages, read, id) {
   this.pages = pages;
   this.read = read;
   this.id = id;
+  this.toggleRead = function() {
+    this.read = !this.read;
+  }
 }
 
 const library = {
