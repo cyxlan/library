@@ -79,11 +79,11 @@ main {
   background-color: var(--accent);
   border-radius: 10px;
   padding: 2px 10px;
-  transition: background-color 50ms ease-out, color 50ms ease-out;
+  outline: 0 solid var(--text);
+  transition: outline-width 50ms ease-out;
   &:hover,
   &:focus {
-    background-color: var(--text);
-    color: var(--accent);
+    outline-width: 5px;
   }
 }
 
