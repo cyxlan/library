@@ -80,8 +80,12 @@ function updateBookTable() {
     library.table.appendChild(row);
   }
 
+  // if library is empty, clear book table
+  if (library.books.length == 0) {
+    library.table.textContent = "";
+  }
   // if table is empty, populate with all books
-  if (library.table.childNodes.length === 0) {
+  else if (library.table.childNodes.length === 0) {
     library.books.forEach((book, i) => {
       addTableRow(book, i);
     })
@@ -112,7 +116,7 @@ const reset = {
   "clearBooks": function() {
     // clear library & book table
     library.books = []
-    library.table.textContent = "";
+    updateBookTable();
   }
 }
 
