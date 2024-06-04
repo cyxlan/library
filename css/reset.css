@@ -32,6 +32,9 @@ dialog, fieldset, legend, ul, button {
 dialog, fieldset, input, button {
   border: 0;
 }
+button, input {
+  cursor: pointer;
+}
 legend {
   /* behave as grid item normally */
   display: contents;

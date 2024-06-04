@@ -132,7 +132,7 @@ button[type="submit"] {
   color: var(--text);
   /* background-color: var(--accent); */
   border-radius: 10px;
-  padding: 20px;
+  padding: 30px 25px;
   fieldset {
     display: grid;
     gap: 20px;
@@ -148,6 +148,9 @@ button[type="submit"] {
   .cancel-btn {
     grid-column: 2;
     justify-self: end;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    font-size: 30px;
   }
   ul.form-fields {
     list-style-type: none;
