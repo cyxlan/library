@@ -141,8 +141,14 @@ newBook.submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   // if form inputs are valid
   if (newBook.form.reportValidity()) {
-    // set new book's id as id of last book + 1
-    library.addBook(...newBook.getFormValues(), library.books.at(-1).id + 1);
+    // if library isn't empty, set new book's id as id of last book + 1
+    let id;
+    if (library.books.length > 0) {
+      id = library.books.at(-1).id + 1
+    } else {
+      id = 0
+    }
+    library.addBook(...newBook.getFormValues(), id);
     newBook.form.reset();
     updateBookTable();
     newBook.modal.close();
