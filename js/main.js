@@ -107,6 +107,15 @@ const newBook = {
   }
 };
 
+const reset = {
+  "btn": document.querySelector('#reset-btn'),
+  "clearBooks": function() {
+    // clear library & book table
+    library.books = []
+    library.table.textContent = "";
+  }
+}
+
 const sampleBooks = {
   "btn": document.querySelector('#sample-btn'),
   "bookInfos": [
@@ -136,10 +145,13 @@ newBook.submitBtn.addEventListener('click', (e) => {
   }
 })
 
+reset.btn.addEventListener('click', () => {
+  reset.clearBooks();
+})
+
 // load sample books
 sampleBooks.btn.addEventListener('click', () => {
-  library.books = [];
-  updateBookTable();
+  reset.clearBooks();
   sampleBooks.bookInfos.forEach((bookInfo, i) => {
     library.addBook(...bookInfo, i);
   })
