@@ -109,6 +109,8 @@ main {
 
 #new-book-modal {
   position: absolute;
+  width: min(600px, calc(100% - 80px));
+  border-radius: 10px;
   /* center on page */
   left: 50%;
   top: 50%;
@@ -121,15 +123,19 @@ main {
 }
 
 #new-book-form {
-  background-color: lightgrey;
+  color: var(--text);
+  background-color: var(--accent);
+  border-radius: 10px;
   padding: 20px;
-  max-width: max-content;
   fieldset {
     display: grid;
     gap: 20px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto;
   }
   legend {
+    font-family: var(--font-secondary);
+    text-transform: uppercase;
+    font-size: 1.5rem;
     font-weight: 600;
     padding-bottom: 10px;
   }
@@ -141,13 +147,30 @@ main {
     list-style-type: none;
     grid-column: 1 / span 2;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 8ch 1fr; /* line break at number of / pages */
+    align-items: center;
     gap: 15px;
     li {
       display: contents;
     }
     label {
-      margin-right: 20px;
+      font-family: var(--font-secondary);
+      text-transform: uppercase;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    input[type="text"],
+    input[type="number"] {
+      border: 1px solid var(--text);
+      border-radius: 5px;
+      padding: 2px 8px;
+      &:focus {
+        outline: 4px solid var(--text);
+      }
+    }
+    /* keep number input arrows flush against right side */
+    input[type="number"] {
+      padding-right: 0;
     }
     input[type="checkbox"]  {
       justify-self: start;
