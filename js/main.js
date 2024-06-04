@@ -107,6 +107,15 @@ const newBook = {
   }
 };
 
+const sampleBooks = {
+  "btn": document.querySelector('#sample-btn'),
+  "bookInfos": [
+    ["The Hobbit", "J.R.R. Tolkien", 295, false],
+    ["The Jungle Book", "Rudyard Kipling", 277, true],
+    ["One Flew Over the Cuckoo's Nest", "Ken Kesey", 325, true]
+  ]
+};
+
 newBook.btn.addEventListener('click', () => {
   newBook.modal.showModal();
 })
@@ -128,13 +137,11 @@ newBook.submitBtn.addEventListener('click', (e) => {
 })
 
 // load sample books
-const sampleBooks = [
-  ["The Hobbit", "J.R.R. Tolkien", 295, false],
-  ["The Jungle Book", "Rudyard Kipling", 277, true],
-  ["One Flew Over the Cuckoo's Nest", "Ken Kesey", 325, true]
-]
-sampleBooks.forEach((bookInfo, i) => {
-  library.addBook(...bookInfo, i);
+sampleBooks.btn.addEventListener('click', () => {
+  library.books = [];
+  updateBookTable();
+  sampleBooks.bookInfos.forEach((bookInfo, i) => {
+    library.addBook(...bookInfo, i);
+  })
+  updateBookTable();
 })
-
-updateBookTable();
