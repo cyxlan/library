@@ -34,13 +34,12 @@ dialog, fieldset, input, button {
 }
 button, input {
   cursor: pointer;
+  color: inherit;
 }
 legend {
   /* behave as grid item normally */
   display: contents;
 }
 button {
-  cursor: pointer;
   background: none;
-  color: inherit;
 }
