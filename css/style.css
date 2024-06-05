@@ -95,6 +95,7 @@ main {
     }
     /* "delete" text */
     span {
+      padding-top: 2px; /* visually center */
       opacity: 0;
       transition: opacity 50ms ease-out;
     }
