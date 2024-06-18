@@ -3,14 +3,16 @@ if (window.history.replaceState) {
   window.history.replaceState(null, null, window.location.href);
 }
 
-function Book(title, author, pages, read, id) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = id;
-  this.toggleRead = function() {
-    this.read = !this.read;
+class Book {
+  constructor(title, author, pages, read, id) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.id = id;
+    this.toggleRead = function() {
+      this.read = !this.read;
+    }
   }
 }
 
@@ -18,13 +20,7 @@ const library = {
   "books": [],
   "table": document.querySelector("#book-table tbody"),
   "addBook": function(title, author, pages, read, id) {
-    const book = new Book(
-      title = title,
-      author = author,
-      pages = pages,
-      read = read,
-      id = id
-    );
+    const book = new Book(title, author, pages, read, id);
     this.books.push(book);
   },
   "deleteBook": function(id) {
