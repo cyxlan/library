@@ -13,6 +13,7 @@ Library app to store a collection of books and track read status.
 
 ## Applied skills
 - Wrote and used a constructor function to create objects
+  - Refactored to use class syntax
 - Used objects to organize variables and methods
 - Used CSS grid & flexbox for layout
 - Made HTML table and added rows via JS
